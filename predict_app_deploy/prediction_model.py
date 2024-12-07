@@ -51,4 +51,3 @@ with open('prediction_model.pkl', 'wb') as file:
     pickle.dump(cph, file)
 
 print("模型已保存为 prediction_model.pkl")
-

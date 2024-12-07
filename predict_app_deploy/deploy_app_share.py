@@ -52,4 +52,3 @@ if st.button("Calculate"):
         five_year_p = five
     five_rounded_num = round(five_year_p * 100, 3)
     st.write(f"5-year predicted survival probability: {five_rounded_num}%")
-
