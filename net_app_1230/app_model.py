@@ -4,45 +4,77 @@ import pickle  # 导入 pickle 库，用于加载已训练的模型
 import os  # 导入 os 库，用于处理文件路径
 from sklearn.metrics import accuracy_score
 
-# 加载模型
-# 获取当前文件的目录
 current_dir = os.path.dirname(os.path.abspath(__file__))
-# 组合当前目录与模型文件名，生成模型的完整路径
 model_path = os.path.join(current_dir, 'stacking_clf.pkl')
-# 打开并加载模型
-with open(model_path, 'rb') as file:
-    model = pickle.load(file)  # 使用 pickle 加载模型文件
 
-# 设置 Streamlit 应用的标题
+with open(model_path, 'rb') as file:
+    model = pickle.load(file)
+
 st.title("Predicting liver metastasis in gastric cancer using Stacking machine learning model")
 
-st.sidebar.header("Selection Panel")  # 侧边栏的标题
+st.sidebar.header("Selection Panel")
 st.sidebar.subheader("Picking up parameters")
-Age = st.sidebar.slider("Age", min_value=0, max_value=4, value=4, step=1)
-Sex = st.sidebar.slider("Sex", min_value=0, max_value=1, value=1, step=1)
-Primary_site = st.sidebar.slider("Primary site", min_value=0, max_value=8, value=8, step=1)
-Histological_type = st.sidebar.slider("Histological type", min_value=0, max_value=2, value=0, step=1)
-T_Stage = st.sidebar.slider("T Stage", min_value=0, max_value=4, value=4, step=1)
-N_Stage = st.sidebar.slider("N Stage", min_value=0, max_value=4, value=0, step=1)
-Surgery_status = st.sidebar.slider("Surgery status", min_value=0, max_value=2, value=0, step=1)
-Radiation_status = st.sidebar.slider("Radiation status", min_value=0, max_value=2, value=2, step=1)
-Chemotherapy_status = st.sidebar.slider("Chemotherapy status", min_value=0, max_value=1, value=1, step=1)
-Extrahepatic_metastasis = st.sidebar.slider("Extrahepatic metastasis", min_value=0, max_value=0, value=1, step=1)
-Tumor_size = st.sidebar.slider("Tumor size", min_value=0, max_value=5, value=1, step=1)
 
-# 创建输入数据框，将输入的特征整理为 DataFrame 格式
+Age_option = ["0-49 years", "50-59 years", "60-69 years", "70-79 years", "80+ years"]
+Age_map = {"0-49 years": 0, "50-59 years": 1, "60-69 years": 2, "70-79 years": 3, "80+ years": 4}
+Age_sb = st.sidebar.selectbox("Age", Age_option, index=4)
+
+Sex_option = {"Female", "Male"}
+Sex_map = {"Female": 0, "Male": 1}
+Sex_sb = st.sidebar.selectbox("Sex", Sex_option, index=1)
+
+Primary_site_option = {"Cardia", "Fundus of stomach", "Body of stomach", "Gastric antrum", "Pylorus", "Lesser curvature of stomach",
+                       "Greater curvature of stomach", "Overlapping lesion of stomach", "Stomach"}
+Primary_site_map = {"Cardia": 0, "Fundus of stomach": 1, "Body of stomach": 2, "Gastric antrum": 3, "Pylorus": 4,
+                    "Lesser curvature of stomach": 5, "Greater curvature of stomach": 6,
+                    "Overlapping lesion of stomach": 7, "Stomach": 8}
+Primary_site_sb = st.sidebar.selectbox("Primary site", Primary_site_option, index=8)
+
+Histological_type_option = {"Adenocarcinoma", "Signet ring cell carcinoma", "Spacial type"}
+Histological_type_map = {"Adenocarcinoma": 0, "Signet ring cell carcinoma": 1, "Spacial type": 2}
+Histological_type_sb = st.sidebar.selectbox("Histological type", Histological_type_option, index=0)
+
+T_Stage_option = {"T1", "T2", "T3", "T4", "TX"}
+T_Stage_map = {"T1": 0, "T2": 1, "T3": 2, "T4": 3, "TX": 4}
+T_Stage_sb = st.sidebar.selectbox("T Stage", T_Stage_option, index=4)
+
+N_Stage_option = {"N0", "N1", "N2", "N3", "NX"}
+N_Stage_map = {"N0": 0, "N1": 1, "N2": 2, "N3": 3, "NX": 4}
+N_Stage_sb = st.sidebar.selectbox("N Stage", N_Stage_option, index=0)
+
+Surgery_status_option = {"No", "Surgery performed", "Unknown"}
+Surgery_status_map = {"No": 0, "Surgery performed": 1, "Unknown": 2}
+Surgery_status_sb = st.sidebar.selectbox("Surgery status", Surgery_status_option, index=0)
+
+Radiation_status_option = {"Radiation", "Refused", "Unknown"}
+Radiation_status_map = {"Radiation": 0, "Refused": 1, "Unknown": 2}
+Radiation_status_sb = st.sidebar.selectbox("Radiation status", Radiation_status_option, index=2)
+
+Chemotherapy_status_option = {"No/Unknown", "Yes"}
+Chemotherapy_status_map = {"No/Unknown": 0, "Yes": 1}
+Chemotherapy_status_sb = st.sidebar.selectbox("Chemotherapy status", Chemotherapy_status_option, index=1)
+
+Extrahepatic_metastasis_option = {"No", "Unknown", "Yes"}
+Extrahepatic_metastasis_map = {"No": 0, "Unknown": 1, "Yes": 2}
+Extrahepatic_metastasis_sb = st.sidebar.selectbox("Extrahepatic metastasis", Extrahepatic_metastasis_option, index=0)
+
+Tumor_size_option = {"<2cm", "≥2cm but <5cm", "≥5cm", "Unknown"}
+Tumor_size_map = {"<2cm": 0, "≥2cm but <5cm": 1, "≥5cm": 2, "Unknown": 3}
+Tumor_size_sb = st.sidebar.selectbox("Tumor size", Tumor_size_option, index=1)
+
+
 input_data = pd.DataFrame({
-    'Age': [Age],
-    'Sex': [Sex],
-    'Primary site': [Primary_site],
-    'Histological type': [Histological_type],
-    'T Stage': [T_Stage],
-    'N Stage': [N_Stage],
-    'Surgery status': [Surgery_status],
-    'Radiation status': [Radiation_status],
-    'Chemotherapy status': [Chemotherapy_status],
-    'Extrahepatic metastasis': [Extrahepatic_metastasis],
-    'Tumor size': [Tumor_size]
+    'Age': [Age_map[Age_sb]],
+    'Sex': [Sex_map[Sex_sb]],
+    'Primary site': [Primary_site_map[Primary_site_sb]],
+    'Histological type': [Histological_type_map[Histological_type_sb]],
+    'T Stage': [T_Stage_map[T_Stage_sb]],
+    'N Stage': [N_Stage_map[N_Stage_sb]],
+    'Surgery status': [Surgery_status_map[Surgery_status_sb]],
+    'Radiation status': [Radiation_status_map[Radiation_status_sb]],
+    'Chemotherapy status': [Chemotherapy_status_map[Chemotherapy_status_sb]],
+    'Extrahepatic metastasis': [Extrahepatic_metastasis_map[Extrahepatic_metastasis_sb]],
+    'Tumor size': [Tumor_size_map[Tumor_size_sb]]
 })
 
 if st.button("Predict"):
