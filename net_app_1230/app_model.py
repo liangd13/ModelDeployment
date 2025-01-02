@@ -58,8 +58,8 @@ Extrahepatic_metastasis_option = {"No", "Unknown", "Yes"}
 Extrahepatic_metastasis_map = {"No": 0, "Unknown": 1, "Yes": 2}
 Extrahepatic_metastasis_sb = st.sidebar.selectbox("Extrahepatic metastasis", Extrahepatic_metastasis_option, index=0)
 
-Tumor_size_option = {"<2cm", "≥2cm but <5cm", "≥5cm", "Unknown"}
-Tumor_size_map = {"<2cm": 0, "≥2cm but <5cm": 1, "≥5cm": 2, "Unknown": 3}
+Tumor_size_option = {"≥2cm but <5cm", "≥5cm", "Unknown", "<2cm"}
+Tumor_size_map = {"≥2cm but <5cm": 0, "≥5cm": 1, "Unknown": 2, "<2cm": 3}
 Tumor_size_sb = st.sidebar.selectbox("Tumor size", Tumor_size_option, index=1)
 
 
