@@ -93,4 +93,4 @@ if st.button("Calculate"):
     y_pred = model.predict(input_data)
     y_pred_proba = model.predict_proba(input_data)[:, 1]
     final_pred_proba = y_pred_proba[0] * 100
-    st.write(f"Predicted probability of liver metastasis: {final_pred_proba:.2f}%")
+    st.write(f"Predicted probability of centenarians: {final_pred_proba:.2f}%")
