@@ -17,6 +17,7 @@ st.title("A precise predictive model for centenarians from the China Healthy Lon
 
 st.sidebar.header("Selection Panel")  # 侧边栏的标题
 st.sidebar.subheader("Picking up parameters")
+
 Gender_option = ["Male", "Female"]
 Gender_map = {"Male": 0, "Female": 1}
 Gender_sb = st.sidebar.selectbox("Gender", Gender_option, index=0)
