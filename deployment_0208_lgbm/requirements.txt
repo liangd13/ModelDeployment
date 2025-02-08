@@ -8,3 +8,4 @@ lifelines==0.29.0
 xgboost==2.0.3
 shap==0.46.0
 joblib==1.4.2
+lightgbm==4.5.0
