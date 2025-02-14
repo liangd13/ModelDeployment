@@ -13,7 +13,7 @@ with open(model_path, 'rb') as file:
     model = pickle.load(file)  # 使用 pickle 加载模型文件
 
 # 设置 Streamlit 应用的标题
-st.title("Same-Day Total Hip Replacement Discharge Time Calculator - Evaluating Delayed Discharge Risk")
+st.title("Same-Day Total Hip Replacement Discharge Time Calculator -  k")
 
 st.sidebar.header("Selection Panel")  # 侧边栏的标题
 # st.sidebar.subheader("Picking up parameters")
