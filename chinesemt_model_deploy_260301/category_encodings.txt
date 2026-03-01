@@ -1,0 +1,54 @@
+Feature: Age
+Categories: ['0-49 years' '50-59 years' '60-69 years' '70-79 years' '80+ years']
+Encoded Values: [0, 1, 2, 3, 4]
+--------------------------------------------------
+Feature: Sex
+Categories: ['Female' 'Male']
+Encoded Values: [0, 1]
+--------------------------------------------------
+Feature: Marital status
+Categories: ['Divorced' 'Married (including common law)' 'Separated'
+ 'Single (never married)' 'Unknown' 'Unmarried or Domestic Partner'
+ 'Widowed']
+Encoded Values: [0, 1, 2, 3, 4, 5, 6]
+--------------------------------------------------
+Feature: Primary site
+Categories: ['C16.0-Cardia, NOS' 'C16.1-Fundus of stomach' 'C16.2-Body of stomach'
+ 'C16.3-Gastric antrum' 'C16.4-Pylorus'
+ 'C16.5-Lesser curvature of stomach NOS'
+ 'C16.6-Greater curvature of stomach NOS'
+ 'C16.8-Overlapping lesion of stomach' 'C16.9-Stomach, NOS']
+Encoded Values: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+--------------------------------------------------
+Feature: Histological type
+Categories: ['Adenocarcinoma' 'Signet ring cell carcinoma' 'spacial type']
+Encoded Values: [0, 1, 2]
+--------------------------------------------------
+Feature: T Stage
+Categories: ['T1' 'T2' 'T3' 'T4' 'TX']
+Encoded Values: [0, 1, 2, 3, 4]
+--------------------------------------------------
+Feature: N Stage
+Categories: ['N0' 'N1' 'N2' 'N3' 'NX']
+Encoded Values: [0, 1, 2, 3, 4]
+--------------------------------------------------
+Feature: Surgery status
+Categories: ['No' 'Surgery performed' 'unknown']
+Encoded Values: [0, 1, 2]
+--------------------------------------------------
+Feature: Radiation status
+Categories: ['Radiation' 'Refused (1988+)' 'Unknown']
+Encoded Values: [0, 1, 2]
+--------------------------------------------------
+Feature: Chemotherapy status
+Categories: ['No/Unknown' 'Yes']
+Encoded Values: [0, 1]
+--------------------------------------------------
+Feature: Tumor size
+Categories: ['DYDY2XY5' 'DYDY5' 'No mass/tumor found' 'UnknowUnknow' 'XY2']
+Encoded Values: [0, 1, 2, 3, 4]
+--------------------------------------------------
+Feature: metastasis
+Categories: [未远处转移 远处转移]
+Encoded Values: [0, 1]
+--------------------------------------------------
