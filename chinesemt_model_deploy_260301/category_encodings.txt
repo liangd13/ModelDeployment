@@ -45,8 +45,8 @@ Categories: ['No/Unknown' 'Yes']
 Encoded Values: [0, 1]
 --------------------------------------------------
 Feature: Tumor size
-Categories: ['DYDY2XY5' 'DYDY5' 'No mass/tumor found' 'UnknowUnknow' 'XY2']
-Encoded Values: [0, 1, 2, 3, 4]
+Categories: ['>=2cm, <5cm' '>=5cm' 'Unknown' '<2cm']
+Encoded Values: [0, 1, 2, 3]
 --------------------------------------------------
 Feature: metastasis
 Categories: [未远处转移 远处转移]

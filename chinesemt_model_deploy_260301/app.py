@@ -25,7 +25,7 @@ N_STAGE_OPTIONS = ['N0', 'N1', 'N2', 'N3', 'NX']
 SURGERY_STATUS_OPTIONS = ['No', 'Surgery performed', 'unknown']
 RADIATION_STATUS_OPTIONS = ['Radiation', 'Refused (1988+)', 'Unknown']
 CHEMOTHERAPY_STATUS_OPTIONS = ['No/Unknown', 'Yes']
-TUMOR_SIZE_OPTIONS = ['DYDY2XY5', 'DYDY5', 'No mass/tumor found', 'UnknowUnknow', 'XY2']
+TUMOR_SIZE_OPTIONS = ['>=2cm, <5cm', '>=5cm', 'Unknown', '<2cm']
 
 FEATURE_NAMES = [
     'Age', 'Primary site', 'Histological type', 'T Stage', 'N Stage',
